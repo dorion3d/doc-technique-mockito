@@ -1,0 +1,8 @@
+### Adds a product
+POST http://localhost:8080/products/add-product
+Content-Type: application/json
+
+{
+  "productId": "2d51cd1e-3ef6-49ff-aa9e-e4bc0a1b18e5",
+  "userId": "17dbab32-edda-45c7-862d-c6dfff8edf5f"
+}
