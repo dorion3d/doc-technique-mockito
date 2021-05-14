@@ -1,6 +1,8 @@
 package org.example.shop.user;
 
 import lombok.AllArgsConstructor;
+import org.example.shop.exceptions.NotFound;
+import org.example.shop.exceptions.ShopException;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -10,12 +12,12 @@ import java.util.UUID;
 public class UserService {
     private final UserClient userClient;
 
-    public User getUserFromId(UUID id) {
-        try {
-            return userClient.getUser(id);
-        } catch (Exception e) {
-            return null;
+    public User getUserFromId(UUID id) throws ShopException {
+        User user = userClient.getUser(id);
+        if(user == null) {
+            throw new NotFound("User not found");
         }
+        return user;
     }
 
     public void syncUser(User user) {

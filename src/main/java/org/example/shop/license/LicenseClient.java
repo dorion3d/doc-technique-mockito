@@ -6,6 +6,10 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.UUID;
 
+/**
+ * Ne peut pas tester avec des mocks réguliers créer par les développeurs
+ * Cependant, pourrait être testé avec des mocks de Mockito (voir UserClientTest)
+ */
 @Component
 public class LicenseClient {
     private static final String CREATE_LICENSE_URL = "/licenses/create";

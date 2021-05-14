@@ -1,22 +1,26 @@
 package org.example.shop.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 import org.example.shop.license.License;
-import java.util.List;
 
-@AllArgsConstructor
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+@RequiredArgsConstructor
 @Getter
 @Setter
 public class User {
-    private String firstName;
-    private String lastName;
-    private String email;
+    private final UUID id;
+    private final String firstName;
+    private final String lastName;
+    private final String email;
     private List<License> licenses;
 
-    public void addLicense(@NonNull License license) {
+    public void addLicense(License license) {
+        if (licenses == null){
+            licenses = new ArrayList<>();
+        }
         licenses.add(license);
     }
 }
